@@ -12,19 +12,19 @@ module.exports = defineConfig({
   },
   e2e: {
     setupNodeEvents(on, config) {
+      // implement node event listeners here
       let options = browserify.defaultOptions;
       options.browserifyOptions.transform[1][1].plugins.push([
         "module-resolver",
         {
           alias: {
-            "@tests": "./test",
-            "@helpers": "./test/helper"
+            "@tests": "./tests",
+            "@helpers": "./tests/helpers"
           }
         }
       ]);
       on("file:preprocessor", browserify(options));
-      // implement node event listeners here
     },
-    specPattern: "../tests/scenarios/**/*.test.js"
+    specPattern: "tests/scenarios/**/*.test.js"
   }
 });
