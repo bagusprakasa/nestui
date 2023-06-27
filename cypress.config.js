@@ -1,6 +1,5 @@
 const { defineConfig } = require("cypress");
 const browserify = require("@cypress/browserify-preprocessor");
-const env = require("env")();
 
 module.exports = defineConfig({
   viewportWidth: 1000,
@@ -9,7 +8,7 @@ module.exports = defineConfig({
   chromeWebSecurity: false,
   defaultCommandTimeout: 10000,
   env: {
-    baseUrl: env.get("BASE_URL")
+    baseUrl: "https://www.saucedemo.com"
   },
   e2e: {
     setupNodeEvents(on, config) {
@@ -26,6 +25,6 @@ module.exports = defineConfig({
       on("file:preprocessor", browserify(options));
       // implement node event listeners here
     },
-    specPattern: "tests/scenarios/**/*.test.js"
+    specPattern: "../tests/scenarios/**/*.test.js"
   }
 });
