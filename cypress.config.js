@@ -1,5 +1,8 @@
 const { defineConfig } = require("cypress");
 const browserify = require("@cypress/browserify-preprocessor");
+const dotenv = require("dotenv");
+// import dotenv from "dotenv";
+dotenv.config();
 
 module.exports = defineConfig({
   viewportWidth: 1000,
@@ -8,7 +11,7 @@ module.exports = defineConfig({
   chromeWebSecurity: false,
   defaultCommandTimeout: 10000,
   env: {
-    baseUrl: "https://www.saucedemo.com"
+    baseUrl: process.env.BASE_URL
   },
   e2e: {
     setupNodeEvents(on, config) {
